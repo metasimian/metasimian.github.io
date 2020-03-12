@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>1-Page Angular Examples - Offline</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  -->
+    <script src="./js/angular.min.js"></script>
+</head>
+<body ng-app="myNgApp">
+
+<div class="container" id="angularjs">
+  <h1>AngularJS Offline Examples from W3Schools</h1>
+  <p>The objective is to have working, offline code/template for AngularJS </p>
+<a href="https://www.w3schools.com/angular/angular_examples.asp">https://www.w3schools.com/angular/angular_examples.asp</a>
+	<p>some basic AngularJS examples</p>
+	<p>Also see the bootstrap examples here: <a href="bootstrap.html">bootstrap.html</a></p> 
+	<div class="row"><div class="col">  
+		<h3>Data Binding (w/ng-controller)</h3>
+		<p>Try to change the names.</p>
+		<div ng-controller="myNgAppBindCtrl">
+		First Name: <input type="text" ng-model="firstName"><br>
+		Last Name: <input type="text" ng-model="lastName"><br>
+		Echo Name: {{firstName + " " + lastName}}
+		</div>
+		<script>
+			var app = angular.module('myNgApp', []);
+			app.controller('myNgAppBindCtrl', function($scope) {
+				$scope.firstName= "John";
+				$scope.lastName= "Doe";
+			});
+		</script>
+	</div></div>
+	
+	<div class="row"><div class="col">  
+		<h3>Looping with objects: ng-init="names=[{name:'Jani',country:'Norway'},..</h3>
+		<div ng-app="" ng-init="names=[
+		{name:'Jani',country:'Norway'},
+		{name:'Hege',country:'Sweden'},
+		{name:'Kai',country:'Denmark'}]">
+			<ul>
+			  <li ng-repeat="x in names">{{ x.name + ', ' + x.country }}</li>
+			</ul>
+		</div>
+	</div></div>
+
+	<div class="row"><div class="col">
+		<h3>Calculation: ng-init="quantity=3;cost=5"</h3>
+		<div ng-app="" ng-init="quantity=3;cost=5">
+		<p>Total in dollar (quantity * cost): <span ng-bind="quantity * cost"></span></p>
+		</div>
+	</div></div>
+
+	<div class="row"><div class="col">
+		<h3>Change css based on input</h3>
+		<style>
+		input.ng-invalid {
+			background-color: lightblue;
+		}
+		</style>
+		<form ng-app="" name="myForm">
+			Enter your name:
+			<input name="myName" ng-model="myText" required>
+		</form>
+
+		<p>Edit the text field and it will get/lose classes according to the status.</p>
+		<p><b>Note:</b> A text field with the "required" attribute is not valid when it is empty.</p>
+	</div></div>
+	
+
+	
+	<div class="row"><div class="col">
+		<h3>To Do</h3>
+		<ul>                                                                                 </li>
+			<li>AngularJS routing https://www.w3schools.com/angular/angular_routing.asp      </li>
+			<li>AngularJS databinding & forms                                                </li>
+			<li>AngularJS XMLHttpRequest                                                     </li>
+			<li>---https://www.w3schools.com/angular/tryit.asp?filename=try_ng_customers_json</li>
+		</ul>
+	</div></div>
+
+	
+	<div class="row"><div class="col">
+	</div></div>
+</div> <!-- end <div class="container" id="angularjs"> -->
+
+<!-- to do: 
+
+https://www.w3schools.com/angular/angular_routing.asp
+
+//AngularJS databinding & forms
+
+//AngularJS XMLHttpRequest
+//https://www.w3schools.com/angular/tryit.asp?filename=try_ng_customers_json
+		<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+		<ul>
+		  <li ng-repeat="x in myData">
+			{{ x.Name + ', ' + x.Country }}
+		  </li>
+		</ul>
+
+		</div>
+
+		<script>
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http) {
+		  $http.get("customers.php").then(function (response) {
+			  $scope.myData = response.data.records;
+		  });
+		});
+		</script>
+
+	<div class="row"><div class="col">
+		<div ng-app="" ng-include="'nginclude.html'"></div>
+	</div></div>
+
+//Data Binding	
+	<div class="row"><div class="col">
+		<div ng-app="myApp" ng-controller="myCtrl">
+		Name: <input ng-model="name">
+		<h1>You entered: {{name}}</h1>
+		</div>
+
+		<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.name = "John Doe";
+		});
+		</script>
+
+		<p>Change the name inside the input field, and you will see the name in the header changes accordingly.</p>
+	</div></div>
+	
+//Content from Directive - for some reason this works but breaks the other demos....	
+<!-- for some reason this breaks the other Angular demos....
+	<div class="row"><div class="col">
+		<div class="w3-test-directive"></div>
+		<p><strong>Note:</strong> You must add the value "C" to the restrict property to be able to invoke the directive from a class name.</p>	
+		<script>
+		var app = angular.module("myNgApp", []);
+		app.directive("w3TestDirective", function() {
+			return {
+				restrict : "C",
+				template : "<h1>Made by a directive!</h1>"
+			};
+		});
+		</script>
+	</div></div>
+-->
+
+</body>
+</html>
